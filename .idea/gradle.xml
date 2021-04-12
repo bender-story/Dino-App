@@ -5,6 +5,7 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="testRunner" value="PLATFORM" />
+        <option name="disableWrapperSourceDistributionNotification" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleJvm" value="1.8" />
@@ -12,6 +13,24 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/coupons" />
+            <option value="$PROJECT_DIR$/features/login" />
+            <option value="$PROJECT_DIR$/features/markets_all" />
+            <option value="$PROJECT_DIR$/features/markets_all/market" />
+            <option value="$PROJECT_DIR$/features/markets_all/market_kids" />
+            <option value="$PROJECT_DIR$/features/messenger" />
+            <option value="$PROJECT_DIR$/features/posts_all" />
+            <option value="$PROJECT_DIR$/features/posts_all/kids_posts" />
+            <option value="$PROJECT_DIR$/features/posts_all/posts" />
+            <option value="$PROJECT_DIR$/features/profile" />
+            <option value="$PROJECT_DIR$/features/videos_all" />
+            <option value="$PROJECT_DIR$/features/videos_all/videos" />
+            <option value="$PROJECT_DIR$/features/videos_all/videos_kids" />
+            <option value="$PROJECT_DIR$/navigations" />
+            <option value="$PROJECT_DIR$/navigations/navigation_sg" />
+            <option value="$PROJECT_DIR$/resource" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
