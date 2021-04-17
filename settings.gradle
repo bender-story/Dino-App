@@ -1,4 +1,4 @@
-include ':navigations:navigation_sg'
+include ':navigation'
 include ':features:profile'
 include ':features:coupons'
 include ':features:markets_all:market_kids'
