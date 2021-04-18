@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@drawable/dark_grey_border"
+                android:background="@drawable/dark_green_border"
                 android:hint="@string/user_name_hint"
                 android:padding="@dimen/margin_x_small" />
 
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@drawable/dark_grey_border"
+                android:background="@drawable/dark_green_border"
                 android:hint="@string/password_hint"
                 android:padding="@dimen/margin_x_small" />
 
