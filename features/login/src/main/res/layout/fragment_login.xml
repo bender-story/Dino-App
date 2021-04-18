@@ -66,6 +66,7 @@
                 android:layout_height="@dimen/edit_text_height"
                 android:layout_marginTop="@dimen/margin_small"
                 android:background="@drawable/dark_green_border"
+                android:inputType="textPassword"
                 android:hint="@string/password_hint"
                 android:padding="@dimen/margin_x_small" />
 

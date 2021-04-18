@@ -10,6 +10,11 @@
         android:name="com.rahul.pod.login.LoginFragment"
         android:label="@string/login_title"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/logoutFragment"
+        android:name="com.rahul.pod.login.LogoutFragment"
+        android:label="@string/logout"
+        tools:layout="@layout/fragment_logout" />
 
 
 </navigation>
