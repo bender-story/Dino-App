@@ -18,17 +18,8 @@
             <option value="$PROJECT_DIR$/features/coupons" />
             <option value="$PROJECT_DIR$/features/dashboard" />
             <option value="$PROJECT_DIR$/features/login" />
-            <option value="$PROJECT_DIR$/features/markets_all" />
-            <option value="$PROJECT_DIR$/features/markets_all/market" />
-            <option value="$PROJECT_DIR$/features/markets_all/market_kids" />
             <option value="$PROJECT_DIR$/features/messenger" />
-            <option value="$PROJECT_DIR$/features/posts_all" />
-            <option value="$PROJECT_DIR$/features/posts_all/kids_posts" />
-            <option value="$PROJECT_DIR$/features/posts_all/posts" />
             <option value="$PROJECT_DIR$/features/profile" />
-            <option value="$PROJECT_DIR$/features/videos_all" />
-            <option value="$PROJECT_DIR$/features/videos_all/videos" />
-            <option value="$PROJECT_DIR$/features/videos_all/videos_kids" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/resource" />
           </set>
