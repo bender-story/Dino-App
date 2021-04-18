@@ -7,6 +7,7 @@
     <string name="submit">Submit</string>
     <string name="dashboard_title">Dashboard</string>
     <string name="cat_title">Category</string>
+    <string name="profile_title">Profile</string>
 
     <string name="dashboard_stories">Stories</string>
     <string name="dashboard_all">All</string>
@@ -19,6 +20,11 @@
     <string name="dashboard_kids_market">Kids Market Place</string>
     <string name="notify">Notification</string>
     <string name="logout">Logout</string>
+
+    <string name="profile_name">Name</string>
+    <string name="profile_phone">Phone No</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_country">Country</string>
 
 
 </resources>
