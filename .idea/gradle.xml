@@ -18,7 +18,7 @@
             <option value="$PROJECT_DIR$/features/categories" />
             <option value="$PROJECT_DIR$/features/dashboard" />
             <option value="$PROJECT_DIR$/features/login" />
-            <option value="$PROJECT_DIR$/features/messenger" />
+            <option value="$PROJECT_DIR$/features/notification" />
             <option value="$PROJECT_DIR$/features/profile" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/resource" />

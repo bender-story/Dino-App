@@ -114,4 +114,5 @@ dependencies {
     implementation project(path: ':features:dashboard')
     implementation project(path: ':features:categories')
     implementation project(path: ':features:profile')
+    implementation project(path: ':features:notification')
 }

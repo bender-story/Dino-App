@@ -29,7 +29,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initCategoryAdapter()
+        initAdapter()
     }
 
     override fun onDestroy() {
@@ -37,7 +37,7 @@ class ProfileFragment : Fragment() {
         _binding = null
     }
 
-    private fun initCategoryAdapter() {
+    private fun initAdapter() {
         val adapter = GroupieAdapter()
         binding.profileRecyclerView.adapter = adapter
         binding.profileRecyclerView.layoutManager =
