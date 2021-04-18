@@ -14,5 +14,8 @@
     <string name="dashboard_market_place">Market Place</string>
     <string name="dashboard_coupons">Coupons</string>
 
+    <string name="notify">Notification</string>
+    <string name="logout">Logout</string>
+
 
 </resources>

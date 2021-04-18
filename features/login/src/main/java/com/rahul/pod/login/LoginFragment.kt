@@ -23,16 +23,6 @@ class LoginFragment : Fragment(), FragmentResultListener {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
-    override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity?)?.supportActionBar?.hide()
-    }
-
     override fun onFragmentResult(requestKey: String, result: Bundle) {
-    }
-
-    override fun onStop() {
-        super.onStop()
-        (activity as AppCompatActivity?)?.supportActionBar?.show()
     }
 }
