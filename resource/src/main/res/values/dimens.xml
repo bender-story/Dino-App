@@ -2,6 +2,7 @@
 <resources>
     <!-- component sizes -->
     <dimen name="image_size">150dp</dimen>
+    <dimen name="icon_size">50dp</dimen>
     <dimen name="edit_text_height">48dp</dimen>
 
     <!-- text sizes -->

@@ -5,4 +5,14 @@
     <string name="user_name_hint">UserName</string>
     <string name="password_hint">Password</string>
     <string name="submit">Submit</string>
+    <string name="dashboard_title">Dashboard</string>
+
+    <string name="dashboard_stories">Stories</string>
+    <string name="dashboard_all">All </string>
+    <string name="dashboard_kids">Kids</string>
+    <string name="dashboard_videos">Videos</string>
+    <string name="dashboard_market_place">Market Place</string>
+    <string name="dashboard_coupons">Coupons</string>
+
+
 </resources>
