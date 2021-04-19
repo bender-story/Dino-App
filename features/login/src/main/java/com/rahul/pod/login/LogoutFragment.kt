@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.rahul.dino.navigation.AppNavigationViewModel
 import com.rahul.dino.navigation.NavigationType
 import com.rahul.pod.login.databinding.FragmentLoginBinding
@@ -20,15 +21,15 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
  */
 class LogoutFragment : Fragment() {
 
-    private val appNavigationViewModel : AppNavigationViewModel by sharedViewModel()
+    private val appNavigationViewModel: AppNavigationViewModel by sharedViewModel()
     private var _binding: FragmentLogoutBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentLogoutBinding.inflate(inflater,container,false)
+        _binding = FragmentLogoutBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -42,9 +43,9 @@ class LogoutFragment : Fragment() {
         _binding = null
     }
 
-    private fun initLoginButtonClick(){
+    private fun initLoginButtonClick() {
         binding.loginAgainButton.setOnClickListener {
-            findNavController().navigate(R.id.action_logout_to_login)
+            findNavController().navigate(R.id.action_logout_to_login, null, navOptions { popUpTo(R.id.nav_graph_logout) { inclusive = false } })
         }
     }
 
