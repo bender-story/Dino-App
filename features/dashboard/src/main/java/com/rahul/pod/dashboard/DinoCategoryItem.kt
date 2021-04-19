@@ -12,7 +12,8 @@ import com.xwray.groupie.viewbinding.BindableItem
 class DinoCategoryItem(
     private val context: Context,
     private val headerText: String,
-    private val subCatergoryList: ArrayList<SubCategoryData>
+    private val subCatergoryList: ArrayList<SubCategoryData>,
+    private val onItemSelected: () -> Unit
 ) :
     BindableItem<DinoCategoryItemBinding>() {
 
@@ -36,7 +37,9 @@ class DinoCategoryItem(
             GridLayoutManager(context, 3)
 
         subCatergoryList.forEach {
-            adapter.add(DinoSubCategoryItem(it))
+            adapter.add(DinoSubCategoryItem(it){
+                onItemSelected.invoke()
+            })
         }
     }
 }

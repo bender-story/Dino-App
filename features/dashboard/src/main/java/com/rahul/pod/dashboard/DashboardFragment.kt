@@ -7,9 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rahul.dino.core.ui.CommonAppBarActions
+import com.rahul.dino.navigation.AppNavigationViewModel
+import com.rahul.dino.navigation.NavigationType
 import com.rahul.pod.dashboard.data.SubCategoryData
 import com.rahul.pod.dashboard.databinding.FragmentDashboardBinding
 import com.xwray.groupie.GroupieAdapter
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -18,6 +22,7 @@ import com.xwray.groupie.GroupieAdapter
  */
 class DashboardFragment : Fragment() {
 
+    private val appNavigationViewModel : AppNavigationViewModel by sharedViewModel()
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
@@ -31,6 +36,7 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAppBarClick()
         initCategoryAdapter()
     }
 
@@ -51,7 +57,7 @@ class DashboardFragment : Fragment() {
                     SubCategoryData(R.drawable.ic_story, getString(R.string.dashboard_all)),
                     SubCategoryData(R.drawable.ic_kid, getString(R.string.dashboard_kids))
                 )
-            )
+            ){initCategoryClick()}
         )
 
         adapter.add(
@@ -60,7 +66,7 @@ class DashboardFragment : Fragment() {
                     SubCategoryData(R.drawable.ic_movie, getString(R.string.dashboard_all)),
                     SubCategoryData(R.drawable.ic_kid_2, getString(R.string.dashboard_kids))
                 )
-            )
+            ){initCategoryClick()}
         )
 
         adapter.add(
@@ -70,8 +76,30 @@ class DashboardFragment : Fragment() {
                     SubCategoryData(R.drawable.ic_kid_3, getString(R.string.dashboard_kids)),
                     SubCategoryData(R.drawable.ic_coupon, getString(R.string.dashboard_coupons))
                 )
-            )
+            ){initCategoryClick()}
         )
 
     }
+
+    private fun initCategoryClick(){
+        appNavigationViewModel.onNavigationClicked(NavigationType.CATEGORY)
+    }
+
+    private fun initAppBarClick(){
+        binding.dashBoardAppBar.setOnMenuClickListener(object : CommonAppBarActions{
+            override fun onNotifyClick() {
+                appNavigationViewModel.onNavigationClicked(NavigationType.NOTIFICATION)
+            }
+
+            override fun onProfileClick() {
+                appNavigationViewModel.onNavigationClicked(NavigationType.PROFILE)
+            }
+
+            override fun onLogoutClick() {
+                appNavigationViewModel.onNavigationClicked(NavigationType.LOGOUT)
+            }
+
+        })
+    }
+
 }

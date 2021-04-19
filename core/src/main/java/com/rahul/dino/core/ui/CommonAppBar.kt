@@ -48,4 +48,8 @@ class CommonAppBar @JvmOverloads constructor(
         }
     }
 
+    fun setOnMenuClickListener(commonAppBarActions: CommonAppBarActions?){
+        this.commonAppBarActions = commonAppBarActions
+    }
+
 }
