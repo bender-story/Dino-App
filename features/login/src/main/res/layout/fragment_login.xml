@@ -52,6 +52,7 @@
                 android:text="@string/login_title" />
 
             <EditText
+                android:id="@+id/userName"
                 style="@style/titleTextBoldStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
@@ -61,6 +62,7 @@
                 android:padding="@dimen/margin_x_small" />
 
             <EditText
+                android:id="@+id/password"
                 style="@style/titleTextBoldStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"

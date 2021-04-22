@@ -1,7 +1,8 @@
 package com.rahul.pod
 
 import android.app.Application
-import com.rahul.pod.di.navigationModule
+import com.rahul.pod.di.appModule
+import com.rahul.pod.login.di.loginModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -16,7 +17,7 @@ class DinoApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@DinoApplication)
-            modules(navigationModule)
+            modules(arrayListOf(appModule, loginModule))
         }
     }
 }

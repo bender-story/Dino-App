@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.rahul.dino.core.utils.filterEmpty
 import com.rahul.dino.navigation.AppNavigationViewModel
 import com.rahul.dino.navigation.NavigationType
 import com.rahul.pod.login.databinding.FragmentLoginBinding
@@ -18,6 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
  */
 class LoginFragment : Fragment() {
     private val appNavigationViewModel : AppNavigationViewModel by sharedViewModel()
+    private val loginViewModel : LoginViewModel by sharedViewModel()
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
@@ -31,6 +33,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initObservers()
         initLoginButtonClick()
     }
 
@@ -39,9 +42,15 @@ class LoginFragment : Fragment() {
         _binding = null
     }
 
+    private fun initObservers() {
+        loginViewModel.loginSuccessEvent.observe(viewLifecycleOwner){
+            appNavigationViewModel.onNavigationClicked(NavigationType.DASHBOARD)
+        }
+    }
+
     private fun initLoginButtonClick(){
         binding.loginButton.setOnClickListener {
-            appNavigationViewModel.onNavigationClicked(NavigationType.DASHBOARD)
+            loginViewModel.login(binding.userName.text.toString().filterEmpty(),binding.password.text.toString().filterEmpty())
         }
     }
 }
