@@ -29,4 +29,14 @@
         <item name="android:textSize">@dimen/tinyTextSize</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <!-- Alert Dialog -->
+    <style name="MaterialAlertDialog_OK_color" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <!-- Style for positive button -->
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle.textColor</item>
+    </style>
+
+    <style name="PositiveButtonStyle.textColor" parent="@style/Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/sec_variant_color</item>
+    </style>
 </resources>

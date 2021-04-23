@@ -1,5 +1,6 @@
 package com.rahul.dino.core.utils
 
+import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -21,4 +22,14 @@ fun AppCompatImageView.getRoundedImage(id: Int?) {
         .load(id)
         .circleCrop()
         .into(this)
+}
+
+
+/**
+ * Make View visible and Gone
+ * @param visible  when true it is visble else its gone
+ */
+@BindingAdapter("makeVisible")
+fun View.makeVisible(visible: Boolean) {
+    this.visibility = if (visible) View.VISIBLE else View.GONE
 }
