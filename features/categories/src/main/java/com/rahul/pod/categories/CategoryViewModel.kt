@@ -1,19 +1,18 @@
-package com.rahul.pod.dashboard
+package com.rahul.pod.categories
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rahul.dino.core.utils.Event
-import com.rahul.pod.dashboard.data.AllCategoriesDataResponse
-import com.rahul.pod.dashboard.network.DashboardServiceRepo
+import com.rahul.pod.categories.data.CategoryDataResponse
+import com.rahul.pod.categories.network.CategoryServiceRepo
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class DashboardViewModel:ViewModel(),KoinComponent {
-
-    private val _categoryData = MutableLiveData<AllCategoriesDataResponse>()
-    val allCategoriesData: LiveData<AllCategoriesDataResponse>
+class CategoryViewModel:ViewModel(), KoinComponent {
+    private val _categoryData = MutableLiveData<CategoryDataResponse>()
+    val categoryData: LiveData<CategoryDataResponse>
         get() = _categoryData
 
     private val _errorEvent = MutableLiveData<Event<Unit>>()
@@ -23,11 +22,12 @@ class DashboardViewModel:ViewModel(),KoinComponent {
     val loader: ObservableField<Boolean> = ObservableField()
 
 
-    private val serviceRepo: DashboardServiceRepo by inject()
+    private val serviceRepo: CategoryServiceRepo by inject()
 
-    fun getDashBoardData() {
+    fun getCategoryData(parentCategory: String,
+                        category: String) {
         loader.set(true)
-        serviceRepo.getDashboardData(onSuccess = {
+        serviceRepo.getCategoryData(parentCategory,category,onSuccess = {
             loader.set(false)
             _categoryData.postValue(it)
         }, onError = {
@@ -40,5 +40,4 @@ class DashboardViewModel:ViewModel(),KoinComponent {
         serviceRepo.dispose()
         super.onCleared()
     }
-
 }

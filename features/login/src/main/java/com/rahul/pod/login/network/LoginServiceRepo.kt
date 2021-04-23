@@ -19,7 +19,6 @@ class LoginServiceRepo : KoinComponent {
     private val disposable: CompositeDisposable = CompositeDisposable()
 
     /**
-     * get movies list from the service
      * @param onSuccess success callback
      * @param onSuccess error callback
      */

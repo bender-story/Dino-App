@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.rahul.dino.core.ui.CommonAppBarActions
 import com.rahul.dino.core.ui_utils.DialogExt
 import com.rahul.dino.navigation.AppNavigationViewModel
+import com.rahul.dino.navigation.NavigationConstants
 import com.rahul.dino.navigation.NavigationType
-import com.rahul.pod.dashboard.data.CategoryDataResponse
+import com.rahul.pod.dashboard.data.AllCategoriesDataResponse
 import com.rahul.pod.dashboard.databinding.FragmentDashboardBinding
 import com.xwray.groupie.GroupieAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -22,25 +23,32 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
  */
 class DashboardFragment : Fragment() {
 
-    private val appNavigationViewModel : AppNavigationViewModel by sharedViewModel()
-    private val viewModel : DashboardViewModel by sharedViewModel()
+    private val appNavigationViewModel: AppNavigationViewModel by sharedViewModel()
+    private val viewModel: DashboardViewModel by sharedViewModel()
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
+
+    private var initialized = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentDashboardBinding.inflate(inflater,container,false)
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         _binding!!.viewModel = viewModel
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initAppBarClick()
-        initObservers()
-        fetchDashboardData()
+        if(!initialized) {
+            initAppBarClick()
+            initObservers()
+            fetchDashboardData()
+            initialized = true
+        }else{
+            viewModel.allCategoriesData.value?.let { initCategoryAdapter(it) }
+        }
     }
 
     override fun onDestroy() {
@@ -48,43 +56,49 @@ class DashboardFragment : Fragment() {
         _binding = null
     }
 
-    private fun fetchDashboardData(){
+    private fun fetchDashboardData() {
         viewModel.getDashBoardData()
     }
 
     private fun initObservers() {
-        viewModel.categoryData.observe(viewLifecycleOwner){
+        viewModel.allCategoriesData.observe(viewLifecycleOwner) {
             initCategoryAdapter(it)
         }
 
-        viewModel.errorEvent.observe(viewLifecycleOwner){
-            DialogExt(requireContext()).buildSingleButtonDialog(getString(R.string.error)){}
+        viewModel.errorEvent.observe(viewLifecycleOwner) {
+            DialogExt(requireContext()).buildSingleButtonDialog(getString(R.string.error)) {}
         }
     }
 
-    private fun initCategoryAdapter(categoryDataResponse: CategoryDataResponse) {
+    private fun initCategoryAdapter(allCategoriesDataResponse: AllCategoriesDataResponse) {
         val adapter = GroupieAdapter()
         binding.dashboardRecyclerView.adapter = adapter
         binding.dashboardRecyclerView.layoutManager =
             LinearLayoutManager(requireContext())
 
 
-        categoryDataResponse.categories.forEach {
+        allCategoriesDataResponse.categories.forEach {
             adapter.add(
                 DinoCategoryItem(
-                    requireContext(),it){initCategoryClick()}
+                    requireContext(), it
+                ) { category, subCategory ->
+                    initCategoryClick(category, subCategory)
+                }
             )
         }
 
 
     }
 
-    private fun initCategoryClick(){
-        appNavigationViewModel.onNavigationClicked(NavigationType.CATEGORY)
+    private fun initCategoryClick(category: String, subCategory: String) {
+        val bundle = Bundle()
+        bundle.putString(NavigationConstants.CATEGORY_EXTRA, category)
+        bundle.putString(NavigationConstants.SUB_CATEGORY_EXTRA, subCategory)
+        appNavigationViewModel.openCategories(bundle)
     }
 
-    private fun initAppBarClick(){
-        binding.dashBoardAppBar.setOnMenuClickListener(object : CommonAppBarActions{
+    private fun initAppBarClick() {
+        binding.dashBoardAppBar.setOnMenuClickListener(object : CommonAppBarActions {
             override fun onNotifyClick() {
                 appNavigationViewModel.onNavigationClicked(NavigationType.NOTIFICATION)
             }

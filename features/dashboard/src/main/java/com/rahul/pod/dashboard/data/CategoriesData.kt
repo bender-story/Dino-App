@@ -1,6 +1,6 @@
 package com.rahul.pod.dashboard.data
 
-data class CategoryDataResponse(
+data class AllCategoriesDataResponse(
     val categories: List<CategoryData>
 )
 data class CategoryData(

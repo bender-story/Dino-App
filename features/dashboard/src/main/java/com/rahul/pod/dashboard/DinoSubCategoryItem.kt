@@ -1,20 +1,19 @@
 package com.rahul.pod.dashboard
 
 import android.view.View
-import com.rahul.dino.core.utils.setImageURL
 import com.rahul.pod.dashboard.data.SubCategoriesData
 import com.rahul.pod.dashboard.databinding.DinoSubCategoryItemBinding
 import com.xwray.groupie.viewbinding.BindableItem
 
 
-class DinoSubCategoryItem(private val subCatergoryData: SubCategoriesData, private val onSelect: () -> Unit ) :
+class DinoSubCategoryItem(private val subCatergoryData: SubCategoriesData, private val onSelect: (String) -> Unit ) :
     BindableItem<DinoSubCategoryItemBinding>() {
 
     override fun bind(viewBinding: DinoSubCategoryItemBinding, position: Int) {
         viewBinding.imageSubCategory.setImageResource(getRandomImage())
         viewBinding.imageDesc.text = subCatergoryData.value
         viewBinding.catergoryItemLayout.setOnClickListener {
-            onSelect.invoke()
+            onSelect.invoke(subCatergoryData.value)
         }
     }
 

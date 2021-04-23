@@ -1,5 +1,6 @@
 package com.rahul.pod.navigation
 
+import android.os.Bundle
 import androidx.navigation.navOptions
 import com.rahul.dino.navigation.AppNavigationHandler
 import com.rahul.dino.navigation.AppNavigationInterface
@@ -13,9 +14,9 @@ class AppNavigationImpl(private val navigationHandler: AppNavigationHandler) :
         }
     }
 
-    override fun openCategoryScreen() {
+    override fun openCategoryScreen(bundle: Bundle) {
         navigationHandler.emit {
-            it.navigate(R.id.nav_graph_category)
+            it.navigate(R.id.nav_graph_category,bundle)
         }
 
     }

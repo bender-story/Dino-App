@@ -1,8 +1,10 @@
 package com.rahul.dino.navigation
 
+import android.os.Bundle
+
 interface AppNavigationInterface {
     fun openDashBoard()
-    fun openCategoryScreen()
+    fun openCategoryScreen(bundle: Bundle)
     fun openProfileScreen()
     fun openNotificationScreen()
     fun openLogoutScreen()
