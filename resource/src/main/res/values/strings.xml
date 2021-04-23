@@ -23,6 +23,7 @@
     <string name="logout">Logout</string>
     <string name="login">Move To Login Page</string>
     <string name="login_error">Username or Password is incorrect. Please try login again.</string>
+    <string name="error">Unexpected Error.</string>
     <string name="login_error_empty">Username or Password cannot be empty or less than 3 characters.</string>
 
     <string name="profile_name">Name</string>

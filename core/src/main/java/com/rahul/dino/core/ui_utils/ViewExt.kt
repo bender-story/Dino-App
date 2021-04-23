@@ -10,8 +10,8 @@ import com.bumptech.glide.Glide
  * this also circle crops the Image.
  * @param path  image url
  */
-@BindingAdapter("getImage")
-fun AppCompatImageView.getImage(path: String?) {
+@BindingAdapter("setImageURL")
+fun AppCompatImageView.setImageURL(path: String?) {
     Glide.with(this.context).load(path).into(this)
 }
 

@@ -1,9 +1,8 @@
-package com.rahul.pod.login.network
+package com.rahul.pod.dashboard.network
 
 import com.rahul.dino.core.network.NetworkConfigInterface
 import com.rahul.dino.core.network.ServiceAPIHelper
-import com.rahul.pod.login.data.LoginDataRequest
-import com.rahul.pod.login.data.LoginDataResponse
+import com.rahul.pod.dashboard.data.CategoryDataResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -11,9 +10,9 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 import org.koin.core.parameter.parametersOf
 
-class LoginServiceRepo : KoinComponent {
+class DashboardServiceRepo : KoinComponent {
     private val networkConfig: NetworkConfigInterface by inject()
-    private val serviceAPIHelper: LoginServiceAPIHelper<LoginServiceInterface,LoginMockServiceImpl> by inject { parametersOf(networkConfig.getServiceType(), networkConfig.getBaseURL()) }
+    private val serviceAPIHelper: DashBoardServiceApiHelper<DashboardServiceInterface,DashboardMockServiceImpl> by inject { parametersOf(networkConfig.getServiceType(), networkConfig.getBaseURL()) }
 
     // initialise disposable object to dump api calls
     private val disposable: CompositeDisposable = CompositeDisposable()
@@ -23,14 +22,12 @@ class LoginServiceRepo : KoinComponent {
      * @param onSuccess success callback
      * @param onSuccess error callback
      */
-    fun login(
-            userName: String,
-            password: String,
-            onSuccess: (LoginDataResponse) -> Unit,
+    fun getDashboardData(
+            onSuccess: (CategoryDataResponse) -> Unit,
             onError: (String) -> Unit
     ) {
 
-        disposable.add(serviceAPIHelper.serviceInterface!!.login(LoginDataRequest(userName, password))
+        disposable.add(serviceAPIHelper.serviceInterface!!.getDashboardData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
