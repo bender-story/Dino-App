@@ -10,7 +10,7 @@ class NetworkConfigImpl : NetworkConfigInterface {
     }
 
     override fun getServiceType(): ServiceType {
-        return ServiceType.API
+        return ServiceType.MOCK
     }
 
 }

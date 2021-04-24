@@ -1,54 +1,39 @@
 package com.rahul.pod.categories.ui
 
-import com.rahul.dino.core.BaseTest
-import com.rahul.dino.core.getOrAwaitValue
-import com.rahul.dino.core.network.ServiceAPIHelper
-import com.rahul.dino.core.network.ServiceType
+import com.rahul.dino.core.utils.getOrAwaitValue
+import com.rahul.pod.categories.CategoryBaseTest
 import com.rahul.pod.categories.CategoryViewModel
-import com.rahul.pod.categories.network.CategoryMockServiceImpl
-import com.rahul.pod.categories.network.CategoryServiceInterface
-import com.rahul.pod.categories.network.CategoryServiceRepo
 import org.junit.Assert
 import org.junit.Test
-import org.mockito.Mockito
 
-class CategoryViewModelTest : BaseTest() {
+class CategoryViewModelTest : CategoryBaseTest() {
     var viewModel: CategoryViewModel? = null
+
 
     override fun beforeEach() {
         super.beforeEach()
-        viewModel = Mockito.mock(CategoryViewModel::class.java)
-
-        Mockito.`when`(viewModel?.serviceRepo).thenReturn(
-            Mockito.mock(CategoryServiceRepo::class.java)
-        )
-
-        Mockito.`when`(viewModel?.serviceRepo?.serviceAPIHelper).thenReturn(
-            ServiceAPIHelper(
-                CategoryServiceInterface::class.java, CategoryMockServiceImpl::class.java,
-                ServiceType.MOCK, ""
-            )
-        )
+        viewModel = CategoryViewModel()
     }
+
 
     @Test
     fun `get dashboard data on success`() {
-        viewModel?.getCategoryData("Stories","All")
-        Assert.assertNotNull(viewModel?.categoryData?.getOrAwaitValue())
-        Assert.assertEquals(viewModel?.loader?.get(), false)
+        viewModel?.getCategoryData("Stories", "All").toString().apply {
+            Assert.assertNotNull(viewModel?.categoryData?.getOrAwaitValue())
+            Assert.assertEquals(viewModel?.loader?.get(), false)
 
-        Assert.assertEquals(
-            viewModel?.categoryData?.value?.results?.get(0)?.title,
-            "Dinosaur (2000) Score"
-        )
-        Assert.assertEquals(
-            viewModel?.categoryData?.value?.results?.get(0)?.overview,
-            "Many dinosaur films are animated and aimed more towards children, and Dinosaur is one of those films. It follows an orphaned dinosaur that is raised by lemurs. They join a herd of dinosaurs after a meteorite destroys their home."
-        )
-        Assert.assertEquals(
-            viewModel?.categoryData?.value?.results?.get(0)?.id,
-            "19401"
-        )
+            Assert.assertEquals(
+                viewModel?.categoryData?.value?.results?.get(0)?.title,
+                "Great Wall of China"
+            )
+            Assert.assertEquals(
+                viewModel?.categoryData?.value?.results?.get(0)?.overview,
+                "Great might be an understatement. One of the world’s largest building-construction projects, the Great Wall of China is widely thought to be about 5,500 miles (8,850 km) long; a disputed Chinese study, however, claims the length is 13,170 miles (21,200 km). Work began in the 7th century BCE and continued for two millennia. Although called a wall, the structure actually features two parallel walls for lengthy stretches. In addition, watchtowers and barracks dot the bulwark. One not-so-great thing about the wall, however, was its effectiveness. Although it was built to prevent invasions and raids, the wall largely failed to provide actual security. Instead, scholars have noted that it served more as political propaganda."            )
+            Assert.assertEquals(
+                viewModel?.categoryData?.value?.results?.get(0)?.id,
+                19401
+            )
+        }
 
     }
 }

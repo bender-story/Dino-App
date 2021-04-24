@@ -22,7 +22,7 @@ class LoginViewModel : ViewModel(), KoinComponent {
     val loginLoader: ObservableField<Boolean> = ObservableField()
 
 
-    val serviceRepo: LoginServiceRepo by inject()
+    private val serviceRepo: LoginServiceRepo by inject()
 
     fun login(userName: String,
               password: String) {
