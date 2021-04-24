@@ -39,8 +39,8 @@ import retrofit2.mock.NetworkBehavior
     private fun createMockServiceImpl(serviceInterfaceClass: Class<T>, mockServiceImpl: Class<R>, baseURL: String): T? {
         val retrofit = NetworkAPIController.getApiClient(baseURL)
         val behavior = NetworkBehavior.create()
-        val mockRetrofit = MockRetrofit.Builder(retrofit).networkBehavior(behavior).build()
-        val delegate: BehaviorDelegate<T>? = mockRetrofit.create(serviceInterfaceClass)
+        val mockRetrofit = retrofit?.let { MockRetrofit.Builder(it).networkBehavior(behavior).build() }
+        val delegate: BehaviorDelegate<T>? = mockRetrofit?.create(serviceInterfaceClass)
         return mockServiceImpl.getConstructor(delegate?.javaClass).newInstance(delegate)
     }
 }

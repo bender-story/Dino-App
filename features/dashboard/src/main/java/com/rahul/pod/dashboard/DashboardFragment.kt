@@ -94,7 +94,7 @@ class DashboardFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString(NavigationConstants.CATEGORY_EXTRA, category)
         bundle.putString(NavigationConstants.SUB_CATEGORY_EXTRA, subCategory)
-        appNavigationViewModel.openCategories(bundle)
+        appNavigationViewModel.onNavigationClicked(NavigationType.CATEGORY,bundle)
     }
 
     private fun initAppBarClick() {

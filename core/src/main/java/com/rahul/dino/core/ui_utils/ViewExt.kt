@@ -15,15 +15,6 @@ fun AppCompatImageView.setImageURL(path: String?) {
     Glide.with(this.context).load(path).into(this)
 }
 
-@BindingAdapter("roundedImge")
-fun AppCompatImageView.getRoundedImage(id: Int?) {
-    Glide
-        .with(this.context)
-        .load(id)
-        .circleCrop()
-        .into(this)
-}
-
 
 /**
  * Make View visible and Gone
