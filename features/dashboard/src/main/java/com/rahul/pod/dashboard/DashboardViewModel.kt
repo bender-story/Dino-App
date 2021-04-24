@@ -23,7 +23,7 @@ class DashboardViewModel:ViewModel(),KoinComponent {
     val loader: ObservableField<Boolean> = ObservableField()
 
 
-    private val serviceRepo: DashboardServiceRepo by inject()
+     val serviceRepo: DashboardServiceRepo by inject()
 
     fun getDashBoardData() {
         loader.set(true)

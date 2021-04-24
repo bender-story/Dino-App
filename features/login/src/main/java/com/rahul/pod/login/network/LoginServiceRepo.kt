@@ -12,7 +12,7 @@ import org.koin.core.inject
 
 class LoginServiceRepo : KoinComponent {
     private val networkConfig: NetworkConfigInterface by inject()
-    private val serviceAPIHelper= ServiceAPIHelper(LoginServiceInterface::class.java, LoginMockServiceImpl::class.java, networkConfig.getServiceType(), networkConfig.getBaseURL())
+    val serviceAPIHelper= ServiceAPIHelper(LoginServiceInterface::class.java, LoginMockServiceImpl::class.java, networkConfig.getServiceType(), networkConfig.getBaseURL())
 
     // initialise disposable object to dump api calls
     private val disposable: CompositeDisposable = CompositeDisposable()

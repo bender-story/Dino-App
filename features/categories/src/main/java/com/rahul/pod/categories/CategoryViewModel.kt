@@ -22,7 +22,7 @@ class CategoryViewModel:ViewModel(), KoinComponent {
     val loader: ObservableField<Boolean> = ObservableField()
 
 
-    private val serviceRepo: CategoryServiceRepo by inject()
+     val serviceRepo: CategoryServiceRepo by inject()
 
     fun getCategoryData(parentCategory: String,
                         category: String) {

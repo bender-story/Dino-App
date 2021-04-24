@@ -11,7 +11,7 @@ import org.koin.core.inject
 
 class CategoryServiceRepo:KoinComponent {
     private val networkConfig: NetworkConfigInterface by inject()
-    private val serviceAPIHelper= ServiceAPIHelper(CategoryServiceInterface::class.java, CategoryMockServiceImpl::class.java, networkConfig.getServiceType(), networkConfig.getBaseURL())
+     val serviceAPIHelper= ServiceAPIHelper(CategoryServiceInterface::class.java, CategoryMockServiceImpl::class.java, networkConfig.getServiceType(), networkConfig.getBaseURL())
 
     // initialise disposable object to dump api calls
     private val disposable: CompositeDisposable = CompositeDisposable()
