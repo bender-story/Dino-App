@@ -10,7 +10,7 @@ import retrofit2.mock.NetworkBehavior
  * Mock service Interface
  *
  */
-open class ServiceAPIHelper<T, R: T>(
+ class ServiceAPIHelper<T, R: T>(
         serviceInterfaceClass: Class<T>,
         mockServiceImpl: Class<R>,
         serviceType: ServiceType,

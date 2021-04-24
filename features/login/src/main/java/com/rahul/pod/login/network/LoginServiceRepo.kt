@@ -9,11 +9,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.core.KoinComponent
 import org.koin.core.inject
-import org.koin.core.parameter.parametersOf
 
 class LoginServiceRepo : KoinComponent {
     private val networkConfig: NetworkConfigInterface by inject()
-    private val serviceAPIHelper: LoginServiceAPIHelper<LoginServiceInterface,LoginMockServiceImpl> by inject { parametersOf(networkConfig.getServiceType(), networkConfig.getBaseURL()) }
+    private val serviceAPIHelper= ServiceAPIHelper(LoginServiceInterface::class.java, LoginMockServiceImpl::class.java, networkConfig.getServiceType(), networkConfig.getBaseURL())
 
     // initialise disposable object to dump api calls
     private val disposable: CompositeDisposable = CompositeDisposable()
