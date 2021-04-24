@@ -41,9 +41,9 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAppBarClick()
+        initObservers()
         if(!initialized) {
-            initAppBarClick()
-            initObservers()
             fetchDashboardData()
             initialized = true
         }else{
