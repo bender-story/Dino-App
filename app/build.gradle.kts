@@ -51,6 +51,7 @@ dependencies {
     testImplementation(Dependencies.JUNIT)
     androidTestImplementation(Dependencies.EXT_JUNIT)
     androidTestImplementation(Dependencies.ESPRESSO)
+    androidTestImplementation(Dependencies.ESPRESSO_CONTRIB)
 
     // Optional -- Robolectric environment
     testImplementation(Dependencies.ANDROIDX_TEST_CORE)

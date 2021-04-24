@@ -10,6 +10,7 @@ object Dependencies{
     const val JUNIT = "junit:junit:${Versions.JUNIT_VERSION}"
     const val EXT_JUNIT = "androidx.test.ext:junit:${Versions.EXT_JUNIT_VERSION}"
     const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_VERSION}"
+    const val ESPRESSO_CONTRIB = "androidx.test.espresso:espresso-contrib:${Versions.ESPRESSO_VERSION}"
 
     // Optional -- Robolectric environment
     const val ANDROIDX_TEST_CORE = "androidx.test:core:${Versions.ANDROIDX_TEST_CORE_VERSION}"
