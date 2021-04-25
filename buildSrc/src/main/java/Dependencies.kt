@@ -51,6 +51,7 @@ object Dependencies{
     const val ANDROIDX_KOIN_LIFECYCLE_EXT = "androidx.lifecycle:lifecycle-extensions:${Versions.ANDROIDX_KOIN_LIFECYCLE_EXT_VERSION}"
     const val ANDROIDX_KOIN_LIFECYCLE_REACTIVE = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.ANDROIDX_KOIN_LIFECYCLE_REACTIVE_VERSION}"
     const val ANDROIDX_FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Versions.ANDROIDX_FRAGMENT_KTX_VERSION}"
+    const val ANDROIDX_FRAGMENT_TESTING = "androidx.fragment:fragment-testing:${Versions.ANDROIDX_FRAGMENT_KTX_VERSION}"
 
     // Kotlin
     const val ANDROIDX_NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION_VERSION}"

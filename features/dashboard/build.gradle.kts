@@ -97,6 +97,7 @@ dependencies {
 
     // Testing Navigation
     androidTestImplementation(Dependencies.ANDROIDX_NAVIGATION_TEST)
+    debugImplementation(Dependencies.ANDROIDX_FRAGMENT_TESTING)
 
     implementation(Dependencies.GROUPIE)
     implementation(Dependencies.GROUPIE_VIEWBINDING)
@@ -104,4 +105,5 @@ dependencies {
     implementation(project( ":core"))
     implementation(project( ":navigation"))
     implementation(project( ":resource"))
+    androidTestImplementation(project( ":core"))
 }
