@@ -287,16 +287,14 @@
 
  
 
-* AppNavigationViewModel is share view model between all the fragments. This has constructer param as AppNavigationInterface and its object is created in the DI app module by adding AppNavigationImpl as parameter. 
-<img width="300" alt="Screenshot 2021-04-26 at 2 39 08 PM" src="https://user-images.githubusercontent.com/10196013/116348103-0ae2fd00-a820-11eb-90cc-773d389df23f.png">
+* AppNavigator is single di object that can be inject every where in the app. This has constructer param as AppNavigationInterface and its object is created in the DI app module by adding AppNavigationImpl as parameter. 
+<img width="839" alt="Screenshot 2021-04-28 at 3 38 05 PM" src="https://user-images.githubusercontent.com/10196013/116365367-c7948880-a837-11eb-8fad-a194d5519f4c.png">
 
  
 
-* Now to AppNavigationViewModel is shared in the fragments and the fragments use the NavigationType to move to different module. 
+* Navigator class is injected all the fragments. Then fragments use onNavigationClicked to move from one module to other with Network Type as the Param.
 
- <img width="300" alt="Screenshot 2021-04-26 at 2 53 52 PM" src="https://user-images.githubusercontent.com/10196013/116348169-277f3500-a820-11eb-9f4f-50eb83da2eb1.png">
 
-<img width="300" alt="Screenshot 2021-04-26 at 2 53 41 PM" src="https://user-images.githubusercontent.com/10196013/116348174-28b06200-a820-11eb-991c-93306463703a.png">
 
  
 
