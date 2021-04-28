@@ -3,18 +3,15 @@ package com.rahul.dino.navigation
 import android.os.Bundle
 
 interface AppNavigationInterface {
-    fun openDashBoard()
-    fun openCategoryScreen(bundle: Bundle)
-    fun openProfileScreen()
-    fun openNotificationScreen()
-    fun openLogoutScreen()
+    fun navigateTo(navigationType: NavigationType, bundle: Bundle? = Bundle.EMPTY)
 }
 
-enum class NavigationType{
+enum class NavigationType {
     DASHBOARD,
     CATEGORY,
     LOGOUT,
     NOTIFICATION,
-    PROFILE
+    PROFILE,
+    LOGIN
 
 }

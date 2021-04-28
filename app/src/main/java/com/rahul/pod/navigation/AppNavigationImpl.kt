@@ -4,38 +4,56 @@ import android.os.Bundle
 import androidx.navigation.navOptions
 import com.rahul.dino.navigation.AppNavigationHandler
 import com.rahul.dino.navigation.AppNavigationInterface
+import com.rahul.dino.navigation.NavigationType
 import com.rahul.pod.R
 
 class AppNavigationImpl(private val navigationHandler: AppNavigationHandler) :
     AppNavigationInterface {
-    override fun openDashBoard() {
+     private fun openDashBoard() {
         navigationHandler.emit {
             it.navigate(R.id.nav_graph_dashboard,null, navOptions { popUpTo(R.id.nav_graph_login){inclusive = false} })
         }
     }
 
-    override fun openCategoryScreen(bundle: Bundle) {
+     private fun openCategoryScreen(bundle: Bundle) {
         navigationHandler.emit {
             it.navigate(R.id.nav_graph_category,bundle)
         }
 
     }
 
-    override fun openProfileScreen() {
+     private fun openProfileScreen() {
         navigationHandler.emit {
             it.navigate(R.id.nav_graph_profile)
         }
     }
 
-    override fun openNotificationScreen() {
+     private fun openNotificationScreen() {
         navigationHandler.emit {
             it.navigate(R.id.nav_graph_notification)
         }
     }
 
-    override fun openLogoutScreen() {
+     private fun openLogoutScreen() {
         navigationHandler.emit {
             it.navigate(R.id.nav_graph_logout,null, navOptions { popUpTo(R.id.nav_graph_dashboard){inclusive = false} })
+        }
+    }
+
+    private fun openLoginScreen() {
+        navigationHandler.emit {
+            it.navigate(R.id.nav_graph_login,null, navOptions { popUpTo(R.id.nav_graph_logout){inclusive = false} })
+        }
+    }
+
+    override fun navigateTo(navigationType: NavigationType, bundle: Bundle?) {
+        when (navigationType){
+            NavigationType.PROFILE -> openProfileScreen()
+            NavigationType.CATEGORY -> bundle?.let { openCategoryScreen(it) }
+            NavigationType.DASHBOARD -> openDashBoard()
+            NavigationType.NOTIFICATION -> openNotificationScreen()
+            NavigationType.LOGOUT -> openLogoutScreen()
+            NavigationType.LOGIN -> openLoginScreen()
         }
     }
 }

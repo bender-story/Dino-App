@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rahul.dino.core.ui.CommonAppBarActions
 import com.rahul.dino.core.ui_utils.DialogExt
-import com.rahul.dino.navigation.AppNavigationViewModel
+import com.rahul.dino.navigation.AppNavigator
 import com.rahul.dino.navigation.NavigationConstants
 import com.rahul.dino.navigation.NavigationType
 import com.rahul.pod.dashboard.data.AllCategoriesDataResponse
 import com.rahul.pod.dashboard.databinding.FragmentDashboardBinding
 import com.xwray.groupie.GroupieAdapter
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 /**
@@ -23,7 +24,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
  */
 class DashboardFragment : Fragment() {
 
-    private val appNavigationViewModel: AppNavigationViewModel by sharedViewModel()
+    private val appNavigator: AppNavigator by inject()
     private val viewModel: DashboardViewModel by sharedViewModel()
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
@@ -94,21 +95,21 @@ class DashboardFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString(NavigationConstants.CATEGORY_EXTRA, category)
         bundle.putString(NavigationConstants.SUB_CATEGORY_EXTRA, subCategory)
-        appNavigationViewModel.onNavigationClicked(NavigationType.CATEGORY,bundle)
+        appNavigator.onNavigationClicked(NavigationType.CATEGORY,bundle)
     }
 
     private fun initAppBarClick() {
         binding.dashBoardAppBar.setOnMenuClickListener(object : CommonAppBarActions {
             override fun onNotifyClick() {
-                appNavigationViewModel.onNavigationClicked(NavigationType.NOTIFICATION)
+                appNavigator.onNavigationClicked(NavigationType.NOTIFICATION)
             }
 
             override fun onProfileClick() {
-                appNavigationViewModel.onNavigationClicked(NavigationType.PROFILE)
+                appNavigator.onNavigationClicked(NavigationType.PROFILE)
             }
 
             override fun onLogoutClick() {
-                appNavigationViewModel.onNavigationClicked(NavigationType.LOGOUT)
+                appNavigator.onNavigationClicked(NavigationType.LOGOUT)
             }
 
         })

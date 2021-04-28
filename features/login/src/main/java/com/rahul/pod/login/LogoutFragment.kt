@@ -1,17 +1,16 @@
 package com.rahul.pod.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
-import com.rahul.dino.navigation.AppNavigationViewModel
+import com.rahul.dino.navigation.AppNavigator
 import com.rahul.dino.navigation.NavigationType
-import com.rahul.pod.login.databinding.FragmentLoginBinding
 import com.rahul.pod.login.databinding.FragmentLogoutBinding
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.android.ext.android.inject
 
 
 /**
@@ -21,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
  */
 class LogoutFragment : Fragment() {
 
-    private val appNavigationViewModel: AppNavigationViewModel by sharedViewModel()
+    private val appNavigator: AppNavigator by inject()
     private var _binding: FragmentLogoutBinding? = null
     private val binding get() = _binding!!
 
@@ -45,7 +44,7 @@ class LogoutFragment : Fragment() {
 
     private fun initLoginButtonClick() {
         binding.loginAgainButton.setOnClickListener {
-            findNavController().navigate(R.id.action_logout_to_login, null, navOptions { popUpTo(R.id.nav_graph_logout) { inclusive = false } })
+            appNavigator.onNavigationClicked(NavigationType.LOGIN)
         }
     }
 

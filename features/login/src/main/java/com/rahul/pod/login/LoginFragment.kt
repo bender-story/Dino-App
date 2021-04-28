@@ -8,9 +8,10 @@ import androidx.fragment.app.Fragment
 import com.rahul.dino.core.ui_utils.DialogExt
 import com.rahul.dino.core.utils.filterEmpty
 import com.rahul.dino.core.utils.validateUserNamePassword
-import com.rahul.dino.navigation.AppNavigationViewModel
+import com.rahul.dino.navigation.AppNavigator
 import com.rahul.dino.navigation.NavigationType
 import com.rahul.pod.login.databinding.FragmentLoginBinding
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -20,7 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
  * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
-    private val appNavigationViewModel : AppNavigationViewModel by sharedViewModel()
+    private val appNavigator: AppNavigator by inject()
     private val loginViewModel : LoginViewModel by sharedViewModel()
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
@@ -47,7 +48,7 @@ class LoginFragment : Fragment() {
 
     private fun initObservers() {
         loginViewModel.loginSuccessEvent.observe(viewLifecycleOwner){
-            appNavigationViewModel.onNavigationClicked(NavigationType.DASHBOARD)
+            appNavigator.onNavigationClicked(NavigationType.DASHBOARD)
         }
 
         loginViewModel.loginErrorEvent.observe(viewLifecycleOwner){
